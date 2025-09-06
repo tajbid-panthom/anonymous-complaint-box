@@ -1,36 +1,126 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# Anonymous Complaint Box
 
-First, run the development server:
+>A secure, anonymous platform for reporting corruption, injustice, or wrongdoing in Bangladesh. Built with Next.js, Drizzle ORM, Neon PostgreSQL, and Tailwind CSS.
+
+---
+
+## 🚀 Features
+
+- **Anonymous Complaint Submission:** Report issues without revealing your identity
+- **Case Tracking:** Track the status of your complaint using a unique Case ID and PIN
+- **Admin Portal:** Secure login for authorized admins to manage, review, and update complaints
+- **Analytics & Export:** View complaint statistics and export data as CSV
+- **Professional UI/UX:** Modern, responsive design with clear navigation and feedback
+
+---
+
+## 🛠️ Technology Stack
+
+- **Framework:** Next.js 15 (App Router, TypeScript)
+- **Database:** Neon PostgreSQL (serverless)
+- **ORM:** Drizzle ORM & Drizzle Kit
+- **Styling:** Tailwind CSS
+- **Authentication:** bcryptjs, cookie
+- **ID Generation:** nanoid
+- **Linting:** ESLint
+- **Other:** React 19, TypeScript 5
+
+---
+
+## ⚡ Getting Started
+
+### 1. Clone & Install
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <your-repo-url>
+cd anonymous-complaint-box
+pnpm install # or npm/yarn/bun
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Configure Environment
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Create a `.env.local` file with your Neon/PostgreSQL connection string:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```env
+DATABASE_URL="postgresql://<username>:<password>@<host>/<db>"
+```
 
-## Learn More
+### 3. Run Migrations
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+pnpm drizzle-kit generate:sqlite # or your preferred migration command
+pnpm drizzle-kit migrate
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 4. Start Development Server
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+pnpm dev
+# Visit http://localhost:3000
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📝 Usage Guide
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### User Side
+- **Submit Complaint:** Go to `/submit`, fill out the form, and receive a Case ID & PIN
+- **Track Case:** Go to `/track`, enter your Case ID & PIN to view status
+
+### Admin Side
+- **Login:** Go to `/admin`, enter credentials
+- **Dashboard:** View, update, and export complaints
+- **Analytics:** View statistics by category/status
+
+---
+
+## 📚 API Endpoints
+
+### Public
+- `POST /api/complaints` — Submit a new complaint
+- `POST /api/track` — Track complaint status
+
+### Admin
+- `POST /api/admin/login` — Admin authentication
+- `GET /api/admin/complaints` — List all complaints
+- `GET /api/admin/analytics` — Complaint statistics
+- `GET /api/admin/export` — Export complaints as CSV
+- `POST /api/admin/update-status` — Update complaint status
+
+---
+
+## 🖥️ UI/UX Highlights
+
+- **Bluish themed admin login page**
+- **Bold Admin Portal button in navigation bar**
+- **Descriptive, concise placeholders**
+- **Cursor pointer on all buttons**
+- **Responsive, professional design**
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repo & clone locally
+2. Create a new branch (`git checkout -b feature/your-feature`)
+3. Commit your changes & push
+4. Open a Pull Request
+
+---
+
+## 📝 License
+
+MIT
+
+---
+
+## 💡 Credits
+
+- Built with [Next.js](https://nextjs.org/), [Drizzle ORM](https://orm.drizzle.team/), [Neon](https://neon.tech/), and [Tailwind CSS](https://tailwindcss.com/)
+
+---
+
+## 📦 Deployment
+
+Deploy easily on [Vercel](https://vercel.com/) or your preferred platform. See [Next.js deployment docs](https://nextjs.org/docs/app/building-your-application/deploying).
