@@ -1,6 +1,7 @@
 "use client";
 import { useState } from 'react';
 import Link from 'next/link';
+import EvidenceViewer from '@/components/EvidenceViewer';
 
 export default function TrackCase() {
   const [form, setForm] = useState<{ case_id: string; pin: string }>({ case_id: '', pin: '' });
@@ -238,20 +239,7 @@ export default function TrackCase() {
                 </div>
 
                 {result.evidence_url && (
-                  <div className="bg-gray-50 p-4 rounded-xl">
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Evidence</label>
-                    <a 
-                      href={result.evidence_url} 
-                      className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium"
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                    >
-                      <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                      </svg>
-                      View Evidence
-                    </a>
-                  </div>
+                  <EvidenceViewer evidenceUrl={result.evidence_url} />
                 )}
 
                 {result.created_at && (
