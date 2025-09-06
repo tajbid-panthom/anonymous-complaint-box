@@ -33,7 +33,7 @@
 ### 1. Clone & Install
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/tajbid-panthom/anonymous-complaint-box.git
 cd anonymous-complaint-box
 pnpm install # or npm/yarn/bun
 ```
