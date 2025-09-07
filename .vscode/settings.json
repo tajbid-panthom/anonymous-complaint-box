@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json.schemastore.org/package.json",
+  "json.schemas": [
+    {
+      "fileMatch": ["package.json"],
+      "url": "https://json.schemastore.org/package.json"
+    }
+  ],
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true
+  }
+}

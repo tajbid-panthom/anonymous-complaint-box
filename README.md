@@ -53,7 +53,22 @@ pnpm drizzle-kit generate:sqlite # or your preferred migration command
 pnpm drizzle-kit migrate
 ```
 
-### 4. Start Development Server
+### 4. Create Demo Admin (Optional)
+
+To access the admin dashboard, you need an admin account. Create a demo admin with:
+
+```bash
+pnpm create-admin
+```
+
+**Demo Admin Credentials:**
+- **Username:** `admin`
+- **Password:** `admin123`
+- **Access:** Visit `/admin` and login with these credentials
+
+> ⚠️ **Security Note:** Change the admin password in production! This is only for development/demo purposes.
+
+### 5. Start Development Server
 
 ```bash
 pnpm dev
@@ -72,6 +87,38 @@ pnpm dev
 - **Login:** Go to `/admin`, enter credentials
 - **Dashboard:** View, update, and export complaints
 - **Analytics:** View statistics by category/status
+
+---
+
+## 👤 Admin Management
+
+### Creating Demo Admin
+```bash
+# Option 1: Using npm script (recommended)
+pnpm create-admin
+
+# Option 2: Direct node command
+node scripts/create-demo-admin.js
+```
+
+### Manual Admin Creation
+If you prefer to create admin manually, you can:
+
+1. **Connect to your database** (PostgreSQL/Neon)
+2. **Insert admin record** with hashed password:
+
+```sql
+-- Replace 'your_username' and 'hashed_password' with actual values
+INSERT INTO admins (username, password_hash, role) 
+VALUES ('your_username', '$2a$10$...hashed_password...', 'admin');
+```
+
+3. **Hash password using bcrypt** (strength: 10)
+
+### Admin Roles
+- `super_admin` - Full access to all features
+- `admin` - Standard admin access
+- `moderator` - Limited access (view only)
 
 ---
 
